@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.28@sha256:bb22d9815c728170f72750f4e5b0d672e06176142e1d602c7e66c050100b7e5b
+# syntax=docker/dockerfile:1.29@sha256:572cebbc2b15e6f84c077742952674889cb63cd5e9b80abdffcbe587b6f19183
 # postgen — Chainguard python, uv-managed venv, nonroot, no shell in the runtime.
 # Renovate keeps builder (:latest-dev) and runtime (:latest) in lockstep so the
 # venv's interpreter always matches the runtime Python.
