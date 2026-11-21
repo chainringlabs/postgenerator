@@ -51,9 +51,10 @@ Docker: `cgr.dev/chainguard/python:latest-dev` builder + `:latest` runtime, dige
 kept in lockstep by Renovate (same pattern as the other repos). No shell in the runtime, so
 HEALTHCHECK/CMD are exec-form and `/data` is created in the builder. Keep `uv.lock` in sync.
 
-CI/CD (standard across projects; do not deviate): `test.yml` on PRs, `docker-publish.yml`
-on `main` (calls `supply-chain.yml`: Socket, OSV, pip-audit; then the shared
-`chainringlabs/ci` publish workflow: cosign + SBOM + provenance to GHCR), `ghcr-retention.yml` weekly, `renovate.json` shared config.
+CI/CD (standard across projects; do not deviate): `test.yml` on PRs; `supply-chain.yml`
+on PRs and weekly; `docker-publish.yml` on `main`; `ghcr-retention.yml` weekly;
+`renovate.json` shared config. The scan (Socket, OSV, pip-audit), the publish (cosign +
+SBOM + provenance to GHCR) and the retention job are shared workflows in `chainringlabs/ci`.
 Never Docker Hub.
 
 ## Environment Variables

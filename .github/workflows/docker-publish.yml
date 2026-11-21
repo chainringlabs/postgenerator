@@ -12,7 +12,9 @@ jobs:
     name: Supply chain
     permissions:
       contents: read
-    uses: ./.github/workflows/supply-chain.yml
+    uses: chainringlabs/ci/.github/workflows/supply-chain.yml@b5195bdfa40bcf6953b2086ea78a65e466a3dc48 # v1.2.0
+    with:
+      socket-advisory: true
     secrets: inherit
 
   image:

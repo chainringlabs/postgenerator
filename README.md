@@ -69,8 +69,9 @@ Quality gate (also run in CI):
 ```
 
 CI follows the same shape as the other repos: `test.yml` (lint, mypy, pytest, Docker
-build) on pull requests; `docker-publish.yml` on every push to `main` runs the
-`supply-chain.yml` scan (Socket, OSV, pip-audit), then calls the organization's shared publish
+build) on pull requests; `supply-chain.yml` scans dependencies on pull requests (failing only
+on vulnerabilities the pull request introduces) and weekly in full; `docker-publish.yml` on every push to `main` runs the
+shared supply-chain scan (Socket, OSV, pip-audit), then calls the organization's shared publish
 workflow (`chainringlabs/ci`), which builds a linux/amd64 image, signs it with cosign, and attests an SBOM and build provenance to `ghcr.io/chainringlabs/postgenerator`;
 `ghcr-retention.yml` prunes old versions weekly; Renovate keeps dependencies, actions,
 and the Chainguard base images current. To run the published image instead of building
