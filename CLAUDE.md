@@ -52,8 +52,8 @@ kept in lockstep by Renovate (same pattern as the other repos). No shell in the 
 HEALTHCHECK/CMD are exec-form and `/data` is created in the builder. Keep `uv.lock` in sync.
 
 CI/CD (standard across projects; do not deviate): `test.yml` on PRs, `docker-publish.yml`
-on `main` (calls `supply-chain.yml`: Socket, OSV, pip-audit; then cosign + SBOM +
-provenance to GHCR), `ghcr-retention.yml` weekly, `renovate.json` shared config.
+on `main` (calls `supply-chain.yml`: Socket, OSV, pip-audit; then the shared
+`chainringlabs/ci` publish workflow: cosign + SBOM + provenance to GHCR), `ghcr-retention.yml` weekly, `renovate.json` shared config.
 Never Docker Hub.
 
 ## Environment Variables
