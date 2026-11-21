@@ -71,10 +71,10 @@ Quality gate (also run in CI):
 CI follows the same shape as the other repos: `test.yml` (lint, mypy, pytest, Docker
 build) on pull requests; `docker-publish.yml` on every push to `main` runs the
 `supply-chain.yml` scan (Socket, OSV, pip-audit), then builds a linux/amd64 image, signs it
-with cosign, and attests an SBOM and build provenance to `ghcr.io/tgrecojr/postgenerator`;
+with cosign, and attests an SBOM and build provenance to `ghcr.io/chainringlabs/postgenerator`;
 `ghcr-retention.yml` prunes old versions weekly; Renovate keeps dependencies, actions,
 and the Chainguard base images current. To run the published image instead of building
-locally, replace `build: .` in `compose.yaml` with `image: ghcr.io/tgrecojr/postgenerator:latest`.
+locally, replace `build: .` in `compose.yaml` with `image: ghcr.io/chainringlabs/postgenerator:latest`.
 
 ## How it learns your voice
 
