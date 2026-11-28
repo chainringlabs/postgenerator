@@ -47,7 +47,8 @@ never call the SDK directly from a step. Web content is untrusted data in every 
 Long work runs as a job via `JobRunner` (never inline in a request). Anything a user must
 do must be reachable from the UI: the container has no shell.
 
-Docker: `cgr.dev/chainguard/python:latest-dev` builder + `:latest` runtime, digest-pinned and
+Docker: `ghcr.io/chainringlabs/base/python-dev:aged` builder + `base/python:aged` runtime
+(3-day-delayed copies of Chainguard python from chainringlabs/base-images), digest-pinned and
 kept in lockstep by Renovate (same pattern as the other repos). No shell in the runtime, so
 HEALTHCHECK/CMD are exec-form and `/data` is created in the builder. Keep `uv.lock` in sync.
 
