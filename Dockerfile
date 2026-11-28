@@ -6,7 +6,7 @@
 # Base images come from chainringlabs/base-images: signature-verified copies of
 # cgr.dev/chainguard/python, held back 3 days (`aged`). Both tags move together
 # from the same daily record, so the builder's venv matches the runtime Python.
-FROM ghcr.io/chainringlabs/base/python-dev:aged@sha256:3ca53097911a867be4f8190b8bc272d1465e9d95ef32ecc2cd70d841e2baeac3 AS builder
+FROM ghcr.io/chainringlabs/base/python-dev:aged@sha256:768ee36ee9f4b8c882634c07d0b889425bc8e100886a3f742b83b1c647cc2d4b AS builder
 
 USER root
 
@@ -34,7 +34,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 # in the image owned by nonroot or the mount inherits root; the runtime has no mkdir.
 RUN mkdir -p /data && chown -R nonroot:nonroot /app /data
 
-FROM ghcr.io/chainringlabs/base/python:aged@sha256:3a89a9027f47e44e9f9da201493013249a02fc87fa7269bba80f621d7ade83f8
+FROM ghcr.io/chainringlabs/base/python:aged@sha256:f522a16f34c8aa60f831e6476e396ef3951830a1b9059d19bc531a544d0f1579
 
 WORKDIR /app
 
