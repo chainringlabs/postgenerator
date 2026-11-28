@@ -3,7 +3,10 @@
 # Renovate keeps builder (:latest-dev) and runtime (:latest) in lockstep so the
 # venv's interpreter always matches the runtime Python.
 
-FROM cgr.dev/chainguard/python:latest-dev@sha256:08141c5166ee89eac4b79d1ab4dc284c1796b5f264d66f0675742819ac511655 AS builder
+# Base images come from chainringlabs/base-images: signature-verified copies of
+# cgr.dev/chainguard/python, held back 3 days (`aged`). Both tags move together
+# from the same daily record, so the builder's venv matches the runtime Python.
+FROM ghcr.io/chainringlabs/base/python-dev:aged@sha256:3ca53097911a867be4f8190b8bc272d1465e9d95ef32ecc2cd70d841e2baeac3 AS builder
 
 USER root
 
@@ -31,7 +34,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 # in the image owned by nonroot or the mount inherits root; the runtime has no mkdir.
 RUN mkdir -p /data && chown -R nonroot:nonroot /app /data
 
-FROM cgr.dev/chainguard/python:latest@sha256:884deb80d867bc984df53f9f2e2a205b9c2922c53ec992fcbeeb1ad7aad711c3
+FROM ghcr.io/chainringlabs/base/python:aged@sha256:3a89a9027f47e44e9f9da201493013249a02fc87fa7269bba80f621d7ade83f8
 
 WORKDIR /app
 
